@@ -1,0 +1,20 @@
+body {
+   padding: 10px;
+}
+.line1{
+   display: inline;
+   padding: 4px;
+   border: 2px;
+}
+
+.line2{
+   display: inline;
+   padding: 4px;
+   border: 2px;
+}
+
+.line3{
+   display: inline;
+   padding: 4px;
+   border: 2px;
+}

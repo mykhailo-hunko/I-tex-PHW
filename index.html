@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+    <html lang = "en">
+    <head>
+        <meta charset="utf-8">
+        <title>HW</title>
+        <link rel="stylesheet" href="style.css">
+        <style type="text/css">
+         body{
+             background-color: aquamarine;
+         }
+        </style>
+             <script type="text/javascript"  src= "script.js"></script>
+             <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+                </head>
+<body onload="f()">
+      
+      
+      <div class="inputParamsHMS" class = "set">
+      <label for="hours_l" id="label1">Hours</label>
+      <input type="text" id="hours">
+      <label for="minutes_l" id="label2">Minutes</label>
+      <input type="text" id="minutes">   
+      <label for="seconds_l" id="label3">Seconds</label>
+      <input type="text" id="seconds">
+      
+      <input type="button" onclick="pause()" value="Пауза" class = "set">
+      <input type="button" onclick="runAfterPause()" value="Возобновить" class = "set">
+       </div>
+       <p>После окончания: <p>
+        <div>
+            <input type="radio" id="choiceRerun"
+             name="radioButton" value="1" checked>
+            <label for="contactChoice1">Продолжить с начала</label>
+            <br>
+            <input type="radio" id="choiceStop"
+             name="radioButton" value= "0" >
+            <label for="contactChoice2">Остановить</label>
+          </div>
+          <br>
+          <div>
+             <input type="button" onclick="startTimer()" value="Запуск" class = "startOrCancel"> 
+             <input type="button" onclick="cancel()" value="Отмена" class = "startOrCancel"> 
+          </div>
+          <div>
+            <p>
+                Осталось: 
+            </p>
+            <div class="line1">
+               Часов:
+               </div> 
+               <div class="line1">
+                hhh
+            </div>
+            <br>
+            <div class="line2">
+                Минут : 
+            </div>
+            
+            <div class="line2">
+                mmm
+            </div>
+            <br>
+             <div class="line3">
+                Секунд: 
+            </div>
+            <div class="line3">
+                sss
+            </div>
+         </div>
+       
+    </body>
