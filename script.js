@@ -3,6 +3,7 @@ var timerId;
 var rad;
 var wasStarted = false;
 var startTimerBool = false;
+var continueBool = false;
 function f(){
   document.getElementById("hours").value = 0;
   document.getElementById("minutes").value = 0;
@@ -44,9 +45,15 @@ function howLeftOnPage(){
   var hours = Math.floor(left/3600);
   var minutes = Math.floor((left - hours*3600)/60);
   var seconds = Math.floor(left - hours*3600 - minutes*60);
+  if(left == -1){
+	   document.getElementById("hhh").innerHTML = 0;
+  document.getElementById("min").innerHTML = 0;
+  document.getElementById("sec").innerHTML = 0;
+  } else {
   document.getElementById("hhh").innerHTML = hours;
   document.getElementById("min").innerHTML = minutes;
   document.getElementById("sec").innerHTML = seconds;
+  }
 }
 
 function cancel(){
@@ -62,16 +69,31 @@ function cancel(){
 
 function pause(){
   clearInterval(timerId);
+  wasStarted = false;
 }
 
 function runAfterPause(){
+	if(wasStarted){
+		wasStartTimer();
+	} else {
+		wasStarted = true;
   timerId =  setInterval( setHowLost,1000);
+	}
 }
 
 function timerTimeOut(){
   pause();
   wasStarted = false;
-  if(rad[0].checked){
+  if(startTimerBool){
+	 notif(continueBool);
+  }  else {
+	  notif(rad[0].checked);
+  }
+
+}
+
+function notif(getOrnot){
+	if(getOrnot){
     startTimer();
     var params = {
       body: "Таймер был перезапущен!",
@@ -85,7 +107,7 @@ function timerTimeOut(){
     }
     var notify = new Notification("Конец!", params);
     notificationRun();
-    alert("Действие таймера окончено!");
+   // alert("Действие таймера окончено!");
     document.title="Timer";
   }
 }
@@ -136,15 +158,13 @@ function getAllUrlParams() {
       }else {
         hours = 0;
       }
-
+if(+ params['continue'] == 1){
+		continueBool = true;
+} else {
+continueBool = false;
+}
       left = (hours*60*60 + min*60 + sec);
       startTimer();
-  console.log( params['continue']);
     }
   
 }
-
-
-
-
-
